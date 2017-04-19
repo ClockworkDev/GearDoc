@@ -1,0 +1,64 @@
+include docStyle.html
+if components.length > 0
+  h1= "Components"
+  div(class="indent")
+    p= "This package registers the following components:"
+    each component in components
+      if component.description
+        h2= component.name
+        div(class="indent")        
+          h3="Description"
+          div(class="indent")            
+            div= component.description
+          if component.events.length > 0
+            h3="Listeners"
+            div(class="indent")            
+              p= "This component listens to the following events:"
+              each event in component.events
+                  div
+                      h4=event.name
+                      div(class="indent")            
+                        div=event.description
+                        if event.dataSchema
+                          p= "The event expects the following data:"
+                          pre=JSON.stringify(event.dataSchema)
+          if component.triggers.length > 0
+            h3="Triggers"
+            div(class="indent")            
+              p= "This component can trigger the following events:"
+              each trigger in component.triggers
+                  div
+                      h4=trigger.name
+                      div(class="indent")            
+                        div=trigger.description
+                        if trigger.dataSchema
+                          p= "The trigger sends the following data:"
+                          pre=JSON.stringify(trigger.dataSchema)
+if collisions.length > 0                
+  h1= "Collisions"
+  div(class="indent")
+    p= "This package registers the following collisions:"
+    each collision in collisions
+      h2= collision.shape1 +" - "+collision.shape2
+      div(class="indent")
+        p=collision.description
+        p="The schema of "+collision.shape1+" is:"
+        pre=JSON.stringify(collision.shape1dataSchema)
+        p="The schema of "+collision.shape2+" is:"
+        pre=JSON.stringify(collision.shape2dataSchema)
+if renderingLibraries.length > 0
+  h1= "Rendering libraries"
+  div(class="indent")  
+    p= "This package registers the following rendering libraries:"
+    each renderingLibrary in renderingLibraries
+      h2= renderingLibrary.name
+      div(class="indent")        
+        div=renderingLibrary.description
+if renderingPipeline
+  h1= "Rendering pipeline"
+  div(class="indent")  
+      p= "This package sets the rendering pipeline to:"
+      ul
+        each lib in renderingPipeline
+          li=lib
+      p="where <previousRenderingPipeline> is the pipeline before this package was loaded."

@@ -1,0 +1,22 @@
+{
+  "name": "geardoc",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClockworkDev/GearDoc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ClockworkDev/GearDoc/issues"
+  },
+  "homepage": "https://github.com/ClockworkDev/GearDoc#readme",
+  "dependencies": {
+    "pug": "^2.0.0-beta.12"
+  }
+}
