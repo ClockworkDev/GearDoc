@@ -70,9 +70,9 @@ function initMockupClockworkRT() {
         var renderingLibraries = {};
         var renderingPipeline = ["<previousRenderingPipeline>"];
         return {
-            register: function (name, constructor,desc) {
+            register: function (name, constructor, desc) {
                 renderingLibraries[name] = constructor;
-                extensionPoints.renderingLibraries.push({name:name,description:desc});
+                extensionPoints.renderingLibraries.push({ name: name, description: desc });
             },
             get: function (name) {
                 return renderingLibraries[name];
@@ -89,15 +89,16 @@ function initMockupClockworkRT() {
     })();
 }
 
-function preproccessExtensionPoints(extensionPoints){
-    extensionPoints.components.forEach(function(component){
-        component.events= component.events.filter(function(e){return e.description});
+function preproccessExtensionPoints(extensionPoints) {
+    extensionPoints.components.forEach(function (component) {
+        component.events = component.events.filter(function (e) { return e.description });
     })
 }
 
 function generateHTML(extensionPoints) {
-    var template = pug.compileFile('template.pug');
+    var path = require("path");
+    var template = pug.compileFile(path.join(__dirname, 'template.pug'));
     return template(extensionPoints);
 }
 
-exports.generateDoc=generateDoc;
+exports.generateDoc = generateDoc;
